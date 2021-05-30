@@ -11,17 +11,17 @@ export const useAuth = () => useContext(AuthContext)
 export const AuthProvider = ({ children }) => {
     // setting user and loader states
     const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
     const history = useHistory()
 
     useEffect(() => {
         // getting user from firebase auth
         auth.onAuthStateChanged((user) => {
             // setting user from firebase auth to state
-            setUser(user)
-            setLoading(false)
-            //using react-router-dom to redirect to new page
-            history.push("/chats")
+            setUser(user);
+            setLoading(false);
+            //using react-router-dom to redirect to new page if there is data in userddddddd
+            if(user) history.push("/chats");
         })
     }, [user, history]);
 

@@ -2,9 +2,9 @@ import React from "react"
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
-// import { AuthProvider } from "../contexts/AuthContext"
+import { AuthProvider } from "./contexts/AuthContext"
 
-// import Chats from "./Chats"
+import Chats from "./components/Chats/Chats.component"
 import Login from "./components/Login/Login.component"
 
 const App = () => {
@@ -12,12 +12,12 @@ const App = () => {
   return (
     <div>
       <Router>
-        {/* <AuthProvider> */}
+        <AuthProvider>
           <Switch>
-            {/* <Route path="/chats" component={Chats} /> */}
-            <Route path="/" component={Login} />
+            <Route exact path="/chats" component={Chats} />
+            <Route exact path="/" component={Login} />
           </Switch>
-        {/* </AuthProvider> */}
+        </AuthProvider>
       </Router>
     </div>
   )
